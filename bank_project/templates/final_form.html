@@ -1,0 +1,229 @@
+{% extends 'base.html' %}
+{% block title %}
+Form
+{% endblock %}
+{% block head %}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+    $("#btshow").click(function(){
+    $("#myDiv").css("display","block");
+    });
+    });
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+   $(document).ready(function()
+    {
+     $('.mat').click(function()
+     {
+    var txt="";
+    $('.mat:checked').each(function()
+    {
+    txt+=$(this).val()+","
+    });
+    $('#txtvalues').val(txt);
+    });
+    });
+
+</script>
+
+
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center mt-5">
+
+
+            <button id="btshow" class="btn btn-primary mt-3 mb-4">click to show form</button>
+            <div id="myDiv" style="display:none;border-style:solid;">
+
+
+                <form class="form mt-4" method='POST' data-cities-url="{% url 'bank:ajax_load_cities' %}"
+                      enctype="multipart/form-data" id="personForm">
+                    {% csrf_token %}
+                    {% if messages %}
+                    {% for i in messages %}
+                    {{form.errors}}
+
+
+                    <p class="h4"> {{i}}</p>
+                    {% endfor %}
+                    {% endif %}
+
+                    <br>
+                    <button type='submit' class="btn btn-danger mt-1 mt-3" value='submit' id="btn1">
+                        Submit
+                    </button>
+
+                    {% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    </div>
+{% endfor %}
+
+                </form>
+
+
+
+
+            </div>
+            <br>
+            <a href="{% url 'bank:home' %}" class="btn btn-primary mb-5 mt-5">Home</a>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+<script>
+    $("#id_district").change(function () {
+        const url = $("#personForm").attr("data-cities-url");  // get the url of the `load_cities` view
+        const districtId = $(this).val();  // get the selected country ID from the HTML input
+
+        $.ajax({                       // initialize an AJAX request
+            url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+            data: {
+                'branch_id': districtId       // add the country id to the GET parameters
+            },
+            success: function (data) {
+               console.log(data)
+               // `data` is the return of the `load_cities` view function
+                $("#id_city").html(data);  // replace the contents of the city input with the data that came from the server
+                /*
+
+                let html_data = '<option value="">---------</option>';
+                data.forEach(function (city) {
+                    html_data += `<option value="${city.id}">${city.name}</option>`
+                });
+                console.log(html_data);
+                $("#id_city").html(html_data);
+
+                */
+            }
+        });
+
+    });
+
+</script>
+
+
+{% endblock %}
+
+
+<!--                    <div style="display:flex;" class="form-group">-->
+<!--                        <div class="p-2 mt-2" style="width:25%;">-->
+<!--                            <p> Username</p>-->
+<!--                        </div>-->
+<!--                        <div class="p-2 mt-2 ml-2" style="width:65%;">-->
+<!--                          <input type="text" name="username" placeholder="Enter the name" style="width:100%;">-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                     <div style="display:flex;" class="form-group">-->
+<!--                        <div class="p-2 mt-2" style="width:25%;">-->
+<!--                            <p> Date of Birth</p>-->
+<!--                        </div>-->
+<!--                        <div class="p-2 mt-2 ml-2" style="width:65%;">-->
+<!--                          <input type="date" name="dob" placeholder="Enter the date of birth" style="width:100%;">-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                     <div style="display:flex;" class="form-group">-->
+<!--                        <div class="p-2 mt-2" style="width:25%;">-->
+<!--                            <p> Age</p>-->
+<!--                        </div>-->
+<!--                        <div class="p-2 mt-2 ml-2" style="width:65%;">-->
+<!--                          <input type="number" name="age" placeholder="Enter the age" style="width:100%;">-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                     <div style="display:flex;" class="form-group">-->
+<!--                        <div class="p-2 mt-2" style="width:25%;">-->
+<!--                            <p> gender</p>-->
+<!--                        </div>-->
+<!--                        <div class="p-2 mt-2 ml-2" style="width:65%;">-->
+<!--                          <input type="text" name="gender" placeholder="Enter the name" style="width:100%;">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                     <div style="display:flex;" class="form-group">-->
+<!--                        <div class="p-2 mt-2" style="width:25%;">-->
+<!--                            <p>Phone Number</p>-->
+<!--                        </div>-->
+<!--                        <div class="p-2 mt-2 ml-2" style="width:65%;">-->
+<!--                          <input type="number" name="phonenumber" placeholder="Enter the phone number" style="width:100%;">-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                     <div style="display:flex;" class="form-group">-->
+<!--                        <div class="p-2 mt-2" style="width:25%;">-->
+<!--                            <p>Email id</p>-->
+<!--                        </div>-->
+<!--                        <div class="p-2 mt-2 ml-2" style="width:65%;">-->
+<!--                          <input type="email" name="mailid" placeholder="Enter the Email" style="width:100%;">-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                     <div style="display:flex;" class="form-group">-->
+<!--                        <div class="p-2 mt-2" style="width:25%;">-->
+<!--                            <p>Address</p>-->
+<!--                        </div>-->
+<!--                        <div class="p-2 mt-2 ml-2" style="width:65%;">-->
+<!--                            <textarea rows="5" name="address" placeholder="Enter the name" style="width:100%;"></textarea>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                     <div style="display:flex;" class="form-group">-->
+<!--                        <div class="p-2 mt-2" style="width:25%;">-->
+<!--                            <p>District</p>-->
+<!--                        </div>-->
+<!--                        <div class="p-2 mt-2 ml-2" style="width:65%;">-->
+<!--                          <input type="text" name="district" placeholder="Select the District" style="width:100%;">-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                     <div style="display:flex;" class="form-group">-->
+<!--                        <div class="p-2 mt-2" style="width:25%;">-->
+<!--                            <p>City</p>-->
+<!--                        </div>-->
+<!--                        <div class="p-2 mt-2 ml-2" style="width:65%;">-->
+<!--                          <input type="text" name="city" placeholder="Select the city" style="width:100%;">-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                     <div style="display:flex;" class="form-group">-->
+<!--                        <div class="p-2 mt-2" style="width:25%;">-->
+<!--                            <p> Account</p>-->
+<!--                        </div>-->
+<!--                        <div class="p-2 mt-2 ml-2" style="width:65%;">-->
+
+<!--                          <input type="text" name="username" placeholder="Enter the name" style="width:100%;" value="{{form.account}}">-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                     <div style="display:flex;" class="form-group">-->
+<!--                        <div class="p-2 mt-2" style="width:25%;">-->
+<!--                            <p> Material</p>-->
+<!--                        </div>-->
+<!--                        <div class="p-2 mt-2 ml-2" style="width:65%;">-->
+<!--                          <input type="checkbox" value="CreditCard" name="mat">Credit Card-->
+<!--                          <input type="checkbox" value="DebitCard" name="mat">Debit Card-->
+<!--                          <input type="checkbox" value="PassBook" name="mat">Passbook-->
+<!--                          <input type="text" name="" id="txtvalues">-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                    <!--    <p>Materials :</p>-->

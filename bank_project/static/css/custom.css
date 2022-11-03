@@ -1,0 +1,50 @@
+'''background:88BDBC  text:#fff   logo:254E58'''
+
+body{
+background:#88BDBC;
+margin:0px;
+}
+h1{
+color:white;
+font-size:3rem;
+}
+.bd_color{
+background:#254E58;
+}
+.tx_color{
+color:#254E58;
+}
+
+
+
+.wh{
+color:white;
+}
+
+
+a.nav-link{
+font-weight:bold;
+color:white;
+}
+
+
+
+
+
+
+
+    .navbar-header {
+    float: left;
+
+    text-align: center;
+    width: 100%;
+}
+
+a.nav-link:hover{
+color:#112D32;
+
+background:white;
+border-radius:3px;
+}
+
+

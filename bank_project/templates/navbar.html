@@ -1,0 +1,80 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bd_color">
+  <a class=" col-lg-3 navbar-brand wh" href="">
+    Dan Bank
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+      <div class="col-lg-5" style="display:flex;margin-left:15rem;">
+<ul class="navbar-nav mx-auto ">
+      <li class="nav-item active">
+        <a class="nav-link wh" href="{% url 'bank:home' %}" >Home </a>
+      </li>
+    {% if request.user.is_authenticated %}
+
+    <li class="nav-item dropdown" >
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown"  aria-expanded="false">
+          {{user}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+          <a class="dropdown-item" href="{% url 'bank:logout' %}">Logout</a>
+
+        </div>
+    {% else %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'bank:login' %}" >Login</a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'bank:register' %}" >Register</a>
+      </li>
+
+    {% endif %}
+
+
+
+<!--      <li class="nav-item dropdown {% if '' in request.path %}active{% endif %}" >-->
+<!--        <a class="nav-link dropdown-toggle" href="#" id="anavbarDropdown" role="button" data-bs-toggle="dropdown"  aria-expanded="false" >-->
+<!--          Branches-->
+<!--        </a>-->
+<!--        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:yellow;">-->
+<!--             {% for branch in links %}-->
+
+<!--          <li><a class="dropdown-item" href="" style="color:black;font-size:1.1rem;">{{link.name}}</a></li>-->
+<!--                {% endfor %}-->
+
+<!--        </ul>-->
+<!--      </li>-->
+
+
+     <li class="nav-item dropdown {% if '' in request.path %}active{% endif %}">
+                    <a class="nav-link dropdown-toggle wh" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown"  aria-expanded="false" style="font-weight:650;font-size:1rem;">
+                        Districts
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:yellow;">
+
+
+
+                        {% for branch in links %}
+                        <li><a class="dropdown-item " href="{{branch.link}}">{{branch.name}} </a></li>
+                        {% endfor %}
+
+                    </ul>
+                </li>
+
+
+
+    </ul>
+</div>
+
+
+  </div>
+</nav>

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}
+Form
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-12 col-lg-12 text-center">
+            <h1>Last Page</h1>
+            <div class="card" style="width:100%;">
+
+                <div class="card-body">
+
+
+                    <div style="display:flex;" class="form-group">
+                        <div class="p-2 mt-2" style="width:25%;"><p>Name</p></div>
+                        <div class="p-2 mt-2 ml-2" style="width:65%;"></div>
+                        {{form.name}}
+                    </div>
+
+                    <div style="display:flex;" class="form-group">
+                        <div class="p-2 mt-2" style="width:25%;"><p>Date of Birth</p></div>
+                        <div class="p-2 mt-2 ml-2" style="width:65%;"></div>
+                        {{form.address}}
+                    </div>
+
+                    <div style="display:flex;" class="form-group">
+                        <div class="p-2 mt-2" style="width:25%;"><p>Age</p></div>
+                        <div class="p-2 mt-2 ml-2" style="width:65%;"></div>
+                        {{form.age}}
+                    </div>
+
+                    <div style="display:flex;" class="form-group">
+                        <div class="p-2 mt-2" style="width:25%;"><p>Gender</p></div>
+                        <div class="p-2 mt-2 ml-2" style="width:65%;"></div>
+                        {{form.gender}}
+                    </div>
+
+                    <div style="display:flex;" class="form-group">
+                        <div class="p-2 mt-2" style="width:25%;"><p>Phone Number</p></div>
+                        <div class="p-2 mt-2 ml-2" style="width:65%;"></div>
+                        {{form.phonenumber}}
+                    </div>
+
+                    <div style="display:flex;" class="form-group">
+                        <div class="p-2 mt-2" style="width:25%;"><p>Address</p></div>
+                        <div class="p-2 mt-2 ml-2" style="width:65%;"></div>
+                        {{form.mailid}}
+                    </div>
+
+
+                    <div style="display:flex;" class="form-group">
+                        <div class="p-2 mt-2" style="width:25%;"><p>Address</p></div>
+                        <div class="p-2 mt-2 ml-2" style="width:65%;"></div>
+                        {{form.address}}
+                    </div>
+
+
+                    <div style="display:flex;" class="form-group">
+                        <div class="p-2 mt-2" style="width:25%;"><p>District</p></div>
+                        <div class="p-2 mt-2 ml-2" style="width:65%;"></div>
+                        {{form.district}}
+                    </div>
+
+                    <div style="display:flex;" class="form-group">
+                        <div class="p-2 mt-2" style="width:25%;"><p>City</p></div>
+                        <div class="p-2 mt-2 ml-2" style="width:65%;"></div>
+                        {{form.city}}
+                    </div>
+
+
+                    <div style="display:flex;" class="form-group">
+                        <div class="p-2 mt-2" style="width:25%;"><p> Account</p></div>
+                        <div class="p-2 mt-2 ml-2" style="width:65%;"></div>
+                        {{form.account}}
+                    </div>
+
+                    <div style="display:flex;" class="form-group">
+                        <div class="p-2 mt-2" style="width:25%;"><p>Material</p></div>
+                        <div class="p-2 mt-2 ml-2" style="width:65%;"></div>
+                        {{form.material}}
+                    </div>
+
+
+
+
+                    <a href="{% url 'bank:home' %}" class="btn btn-primary mb-5">Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
